@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aura.springboot.mapper.ApplicationMapper">
+
+	<!-- 查看app版本状态 -->
+	<select id="selectVersionByAppPcgName"
+		resultType="com.aura.springboot.entity.Application">
+		select
+		appId,appName,appPcgName,`describe`,version,apkAddress,createTime,mandatoryUpString,versionName
+		from application
+		where appPcgName = #{appPcgName}
+		order by version DESC
+		limit 0,1
+	</select>
+         
+</mapper> 

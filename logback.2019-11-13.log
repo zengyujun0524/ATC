@@ -1,0 +1,212 @@
+09:12:54.528 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - Starting Ac7UserServerApplication on Carry with PID 12096 (started by Administrator in C:\Users\Administrator\Desktop\备份\9.18\AC7UserServer)
+09:12:54.644 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - No active profile set, falling back to default profiles: default
+09:12:54.723 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+09:12:54.723 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+09:12:55.882 logback [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2265221] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+09:12:56.246 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8095 (http)
+09:12:56.257 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8095"]
+09:12:56.260 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+09:12:56.260 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+09:12:56.270 logback [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [E:\jdk\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:/jre/bin/server;E:/jre/bin;E:/jre/lib/amd64;D:\software\xshell\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;E:\jdk\bin;E:\jdk\jre\bin;E:\Apache\maven\bin;D:\software\tortoiseSVN\bin;D:\git\Git\cmd;E:\node.js\;C:\Users\Administrator\AppData\Local\GitHubDesktop\bin;C:\Users\Administrator\AppData\Roaming\npm;C:\Program Files\Bandizip\;C:\Users\Administrator\AppData\Local\BypassRuntm;D:\网盘\fiddler;C:\Users\Administrator\Desktop;;.]
+09:12:56.357 logback [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+09:12:56.357 logback [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1634 ms
+09:12:56.381 logback [restartedMain] INFO  o.s.b.w.s.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+09:12:56.384 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+09:12:56.384 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+09:12:56.384 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+09:12:56.384 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+09:12:57.472 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+09:12:57.513 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+09:12:57.562 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+09:12:57.746 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+09:12:57.760 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+09:12:57.781 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+09:12:58.000 logback [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUserByIdUsingPOST_1
+09:12:58.019 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8095"]
+09:12:58.057 logback [restartedMain] INFO  o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+09:12:58.073 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8095 (http) with context path ''
+09:12:58.075 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - Started Ac7UserServerApplication in 4.193 seconds (JVM running for 5.503)
+09:13:05.156 logback [http-nio-8095-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+09:13:05.156 logback [http-nio-8095-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+09:13:05.167 logback [http-nio-8095-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+09:20:10.896 logback [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+09:20:10.899 logback [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+11:36:13.950 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - Starting Ac7UserServerApplication on Carry with PID 13672 (started by Administrator in C:\Users\Administrator\Desktop\备份\9.18\AC7UserServer)
+11:36:13.957 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - No active profile set, falling back to default profiles: default
+11:36:14.006 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+11:36:14.007 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+11:36:14.972 logback [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$815e8b9d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:36:15.288 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8095 (http)
+11:36:15.306 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8095"]
+11:36:15.310 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+11:36:15.310 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+11:36:15.315 logback [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [E:\jdk\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:/jre/bin/server;E:/jre/bin;E:/jre/lib/amd64;D:\software\xshell\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;E:\jdk\bin;E:\jdk\jre\bin;E:\Apache\maven\bin;D:\software\tortoiseSVN\bin;D:\git\Git\cmd;E:\node.js\;C:\Users\Administrator\AppData\Local\GitHubDesktop\bin;C:\Users\Administrator\AppData\Roaming\npm;C:\Program Files\Bandizip\;C:\Users\Administrator\AppData\Local\BypassRuntm;D:\网盘\fiddler;C:\Users\Administrator\Desktop;;.]
+11:36:15.396 logback [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+11:36:15.396 logback [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1389 ms
+11:36:15.443 logback [restartedMain] INFO  o.s.b.w.s.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+11:36:15.446 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+11:36:15.446 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+11:36:15.446 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+11:36:15.446 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+11:36:16.209 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+11:36:16.244 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+11:36:16.289 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+11:36:16.417 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+11:36:16.433 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+11:36:16.444 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+11:36:16.696 logback [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUserByIdUsingPOST_1
+11:36:16.715 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8095"]
+11:36:16.753 logback [restartedMain] INFO  o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+11:36:16.770 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8095 (http) with context path ''
+11:36:16.772 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - Started Ac7UserServerApplication in 3.225 seconds (JVM running for 4.575)
+11:45:05.928 logback [RMI TCP Connection(3)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+11:45:05.935 logback [RMI TCP Connection(3)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+10:18:40.428 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - Starting Ac7UserServerApplication on Carry with PID 9900 (started by Administrator in C:\Users\Administrator\Desktop\备份\9.18\AC7UserServer)
+10:18:40.415 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - Starting Ac7UserServerApplication on Carry with PID 9140 (started by Administrator in C:\Users\Administrator\Desktop\备份\9.18\AC7UserServer)
+10:18:40.456 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - No active profile set, falling back to default profiles: default
+10:18:40.456 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - No active profile set, falling back to default profiles: default
+10:18:40.522 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+10:18:40.522 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+10:18:40.530 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+10:18:40.530 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+10:18:42.833 logback [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4b6e58a8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:18:42.840 logback [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e42828b9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:18:43.717 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8095 (http)
+10:18:43.736 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8095"]
+10:18:43.741 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+10:18:43.742 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+10:18:43.749 logback [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [E:\jdk\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:/jre/bin/server;E:/jre/bin;E:/jre/lib/amd64;D:\software\xshell\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;E:\jdk\bin;E:\jdk\jre\bin;E:\Apache\maven\bin;D:\software\tortoiseSVN\bin;D:\git\Git\cmd;E:\node.js\;C:\Users\Administrator\AppData\Local\GitHubDesktop\bin;C:\Users\Administrator\AppData\Roaming\npm;C:\Program Files\Bandizip\;C:\Users\Administrator\AppData\Local\BypassRuntm;D:\网盘\fiddler;C:\Users\Administrator\Desktop;;.]
+10:18:43.783 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8095 (http)
+10:18:43.811 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8095"]
+10:18:43.822 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+10:18:43.822 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+10:18:43.833 logback [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [E:\jdk\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:/jre/bin/server;E:/jre/bin;E:/jre/lib/amd64;D:\software\xshell\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;E:\jdk\bin;E:\jdk\jre\bin;E:\Apache\maven\bin;D:\software\tortoiseSVN\bin;D:\git\Git\cmd;E:\node.js\;C:\Users\Administrator\AppData\Local\GitHubDesktop\bin;C:\Users\Administrator\AppData\Roaming\npm;C:\Program Files\Bandizip\;C:\Users\Administrator\AppData\Local\BypassRuntm;D:\网盘\fiddler;C:\Users\Administrator\Desktop;;.]
+10:18:43.845 logback [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+10:18:43.846 logback [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3324 ms
+10:18:43.891 logback [restartedMain] INFO  o.s.b.w.s.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+10:18:43.897 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+10:18:43.897 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+10:18:43.897 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+10:18:43.898 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+10:18:43.955 logback [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+10:18:43.955 logback [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3425 ms
+10:18:43.996 logback [restartedMain] INFO  o.s.b.w.s.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+10:18:44.000 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+10:18:44.000 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+10:18:44.000 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+10:18:44.000 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+10:18:45.547 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+10:18:45.608 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+10:18:45.651 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+10:18:45.708 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+10:18:45.731 logback [restartedMain] WARN  o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+10:18:45.867 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+10:18:46.042 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+10:18:46.065 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+10:18:46.097 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+10:18:46.175 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+10:18:46.216 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+10:18:46.252 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+10:18:46.541 logback [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUserByIdUsingPOST_1
+10:18:46.573 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8095"]
+10:18:46.678 logback [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUserByIdUsingPOST_1
+10:18:46.718 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8095"]
+10:18:46.743 logback [restartedMain] ERROR o.apache.catalina.util.LifecycleBase - Failed to start component [Connector[HTTP/1.1-8095]]
+org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:259)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:197)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:300)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:162)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.aura.springboot.Ac7UserServerApplication.main(Ac7UserServerApplication.java:21)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:236)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1108)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:550)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:957)
+	... 19 common frames omitted
+10:18:46.750 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8095"]
+10:18:46.751 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+10:18:46.774 logback [restartedMain] INFO  o.apache.catalina.util.LifecycleBase - The stop() method was called on component [StandardServer[-1]] after stop() had already been called. The second call will be ignored.
+10:18:46.775 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8095"]
+10:18:46.775 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8095"]
+10:18:46.780 logback [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+10:18:46.783 logback [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8095 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8095, or configure this application to listen on another port.
+
+10:18:46.795 logback [restartedMain] INFO  o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+10:18:46.806 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+10:18:46.836 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8095 (http) with context path ''
+10:18:46.843 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - Started Ac7UserServerApplication in 7.48 seconds (JVM running for 8.814)
+10:18:49.749 logback [http-nio-8095-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+10:18:49.749 logback [http-nio-8095-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:18:49.760 logback [http-nio-8095-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms
+10:20:00.839 logback [http-nio-8095-exec-8] INFO  com.zaxxer.hikari.HikariDataSource - DatebookHikariCP - Starting...
+10:20:01.120 logback [http-nio-8095-exec-8] INFO  com.zaxxer.hikari.pool.PoolBase - DatebookHikariCP - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+10:20:01.152 logback [http-nio-8095-exec-8] INFO  com.zaxxer.hikari.HikariDataSource - DatebookHikariCP - Start completed.
+10:20:01.172 logback [http-nio-8095-exec-8] INFO  c.a.s.service.RelationService - ------------添加亲友信息--------------》com.aura.springboot.entity.Friend@14853e9e
+10:20:33.886 logback [Thread-5] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+10:20:33.887 logback [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - DatebookHikariCP - Shutdown initiated...
+10:20:33.889 logback [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - DatebookHikariCP - Shutdown completed.
+10:20:34.113 logback [restartedMain] INFO  c.a.springboot.utils.ApnsPushUtils - -----------is----->java.io.BufferedInputStream@4bdffe72
+10:20:34.191 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - Starting Ac7UserServerApplication on Carry with PID 9140 (started by Administrator in C:\Users\Administrator\Desktop\备份\9.18\AC7UserServer)
+10:20:34.191 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - No active profile set, falling back to default profiles: default
+10:20:34.542 logback [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4b6e58a8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:20:34.594 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8095 (http)
+10:20:34.595 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8095"]
+10:20:34.595 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+10:20:34.595 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+10:20:34.603 logback [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+10:20:34.603 logback [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 410 ms
+10:20:34.612 logback [restartedMain] INFO  o.s.b.w.s.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+10:20:34.613 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+10:20:34.613 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+10:20:34.613 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+10:20:34.613 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+10:20:34.894 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+10:20:34.902 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+10:20:34.920 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+10:20:34.966 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+10:20:34.967 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+10:20:34.969 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+10:20:35.083 logback [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUserByIdUsingPOST_1
+10:20:35.093 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8095"]
+10:20:35.094 logback [restartedMain] INFO  o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+10:20:35.096 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8095 (http) with context path ''
+10:20:35.096 logback [restartedMain] INFO  c.a.s.Ac7UserServerApplication - Started Ac7UserServerApplication in 0.95 seconds (JVM running for 117.066)
+10:20:35.099 logback [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+10:20:48.630 logback [RMI TCP Connection(4)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+10:20:48.633 logback [RMI TCP Connection(4)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'

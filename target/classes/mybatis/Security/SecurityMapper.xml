@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aura.springboot.mapper.SecurityMapper">
+	<!-- 绑定设备    -->
+	<insert id="insertSecuityQuestion"
+		parameterType="com.aura.springboot.entity.Security">
+     insert INTO 
+           security(userId,problem,answer) 
+          VALUES(#{userId},#{problem},#{answer})
+	</insert>
+	<select id="selectSecuityQuestion" resultType="com.aura.springboot.entity.Security"> 
+   SELECT userId,problem,answer FROM  security WHERE  userId=#{userId}
+	</select>
+	
+	<update id="updateSecuityQuestion">
+	  update  security
+	  <set>
+	    problem =#{problem},
+	   
+	    answer =#{answer}
+	  
+	  </set>
+	    <where>
+	    userId =#{userId}  
+	    </where>
+	
+	</update>
+</mapper>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aura.springboot.mapper.UserMapper">
+
+	<!-- 手机用户注册 -->
+	<insert id="registerPhone"
+		parameterType="com.aura.springboot.entity.User">
+		INSERT INTO
+		`user`(username,password,phone,sex,accType,countryCode,logStatus,createTime,appTypeId,callStatus,phoneModel,sysType)
+		VALUES(#{username},#{password},#{phone},1,0,#{countryCode},#{logStatus},#{createTime},#{appTypeId},#{callStatus},#{phoneModel},#{sysType});
+	</insert>
+
+	<!--更新单点登录token -->
+<!-- 	<update id="updateToken">
+		update user 
+		set token = #{token}
+		where userId = #{userId}		
+	</update>  -->
+
+	<!-- 更新离线token和系统类型 -->
+	<update id="updatePushTokenAndSysType">
+		update user 
+		<set>
+		<!-- 	<if test="pushToken != null">
+				pushToken = #{pushToken},
+			</if> -->
+			<if test="sysType != null">
+				sysType = #{sysType},
+			</if>
+		</set>
+		where userId = #{userId}		
+	</update>
+
+	<!-- 通过传入imConnect 查找出对应的userId，然后通过userId在设备绑定表中查找对应的具有绑定关系的设备，以此查找出他们的imConnect 
+		返回数据，用于Im推送消息 -->
+	<select id="selectImConnect" resultType="java.lang.String">
+		select imConnect
+		from
+		user
+		where userId in
+		(select userId from relation where proId =
+		(select
+		proId from relation where userId =
+		(select userId from user where
+		imConnect = #{imConnect})
+		and bindingStatus = 0))
+		or macAddress =
+		(select macAddress from equipment where proId =
+		(select proId from
+		relation where userId =
+		(select userId from user where imConnect =
+		#{imConnect})))
+		and accType != 2
+	</select>
+
+	<select id="selectImConnectByMac" resultType="java.lang.String">
+		select imConnect
+		from user
+		where userId IN
+		(select userId from relation where proId =
+		(select proId from equipment where macAddress =
+		(select macAddress from
+		user where imConnect = #{imConnect})))
+	</select>
+
+	<!-- 平板用户注册 -->
+	<insert id="registerPro"
+		parameterType="com.aura.springboot.entity.User">
+		insert into
+		`user`(username,password,sex,macAddress,accType,logStatus,createTime,appTypeId,callStatus,photo,phoneModel)
+		values(#{username},#{password},1,#{macAddress},#{accType},#{logStatus},#{createTime},#{appTypeId},#{callStatus},#{photo},#{phoneModel});
+	</insert>
+
+	<!-- 根据mac地址查询平板关联的无绳子机 -->
+	<select id="selectProRelationNoRopeMachine"
+		resultType="com.aura.springboot.entity.User">
+		select
+		userId,username,password,phone,macAddress,email,birthday,sex,photo,accType,countryCode,imConnect,logStatus,appTypeId,callStatus
+		from user where macAddress = #{macAddress} and accType = 2 
+	</select>
+
+	<!-- 修改所有无绳子机通话状态 -->
+	<update id="updateNoRopeMachineCallStatus">
+		update user set callStatus = #{callStatus} where
+		macAddress =
+		#{macAddress} and accType = 2
+	</update>
+
+	<!-- 修改单个无绳子机通话状态 -->
+	<update id="updateSingNoRopeMachineCallStatus">
+		update user set callStatus = #{callStatus} where
+		macAddress =
+		#{macAddress} and phone = #{phone}
+	</update>
+
+
+
+	<!-- 根据userId查询对应的手机编号 -->
+	<select id="selectRelationProIdByUserId"
+		resultType="java.lang.Integer">
+		select relationProId from relation where userId = #{userId}
+		and bindingStatus = 0
+	</select>
+
+	<!-- 根据im账号查询用户实体 -->
+	<select id="selectUserByIm"
+		resultType="com.aura.springboot.entity.User">
+		select
+		userId,username,password,phone,macAddress,email,birthday,sex,photo,accType,countryCode,imConnect,logStatus,callStatus,
+		appTypeId,phoneModel,createTime,<!-- pushToken, -->sysType<!--, token, news-->
+		from user where imConnect = #{imConnect}
+	</select>
+
+	<!-- 查询平板关联的无绳子机是否已经绑定 -->
+	<select id="selectNoRopeMachineCount"
+		resultType="java.lang.Integer">
+		select count(1) from user where macAddress = #{macAddress}
+		and accType = 2 and phone = #{phone} for update
+	</select>
+
+	<!-- 插入无绳子机 -->
+	<insert id="insertNoRopeMachine">
+		insert into
+		user(macAddress,username,phone,accType,createTime,appTypeId,logStatus,callStatus)
+		values(#{macAddress},#{username},#{phone},2,#{createTime},1,#{logStatus},0);
+	</insert>
+
+	<!-- 清空无绳子机 -->
+	<delete id="emptySubmachineList">
+		delete from `user`
+		where macAddress = #{macAddress}
+		and accType = 2
+	</delete>
+
+	<!-- 修改密码 -->
+	<update id="updatePwd">
+		UPDATE `user`
+		SET password = #{password}
+		WHERE userId =
+		#{userId}
+	</update>
+
+	<!-- 更新无绳子机名称 -->
+	<update id="updateNoRopeMachineName">
+		update user set username = #{username} where
+		macAddress = #{macAddress} and phone = #{phone}
+	</update>
+
+	<!-- 重置手机型号 -->
+	<update id="updatePhoneModel">
+		UPDATE `user`
+		SET phoneModel = #{phoneModel}
+		WHERE
+		userId =
+		#{userId}
+	</update>
+
+	<!-- 更新头像 -->
+	<update id="updateUserPhotoById">
+		UPDATE `user`
+		SET photo = #{photo}
+		WHERE userId =
+		#{userId}
+	</update>
+
+	<!-- 完善信息 -->
+	<update id="updateUser"
+		parameterType="com.aura.springboot.entity.User">
+		UPDATE user
+		<set>
+			<if test="username != null">
+				username = #{username},
+			</if>
+			<if test="sex != null">
+				sex = #{sex},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday},
+			</if>
+			<if test="imConnect != null">
+				imConnect= #{imConnect},
+			</if>
+			<if test="photo != null">
+				photo= #{photo}
+			</if>
+		</set>
+		WHERE userId = #{userId}
+	</update>
+
+	<!-- 根据用户id查询信息 -->
+	<select id="selectUserById"
+		resultType="com.aura.springboot.entity.User">
+		SELECT
+		userId,username,password,phone,macAddress,email,birthday,sex,photo,accType,countryCode,imConnect,logStatus,callStatus,appTypeId,phoneModel,createTime<!-- ,pushToken -->,sysType
+		<!-- ,token -->
+		FROM user
+		WHERE userId = #{userId}
+	</select>
+
+	<!-- 根据手机号码查询是否存在信息 -->
+	<select id="selectUserByPhone"
+		resultType="com.aura.springboot.entity.User">
+		select
+		userId,username,password,phone,macAddress,email,birthday,sex,photo,accType,countryCode,imConnect,logStatus,appTypeId,createTime,callStatus,phoneModel<!-- ,pushToken ,news-->,sysType
+		from user
+		where phone = #{phone} and countryCode = #{countryCode}
+	</select>
+
+	<!-- 根据mac地址查询是否存在信息 -->
+	<select id="selectUserByMacAddress"
+		resultType="com.aura.springboot.entity.User">
+		select
+		userId,username,password,phone,macAddress,email,birthday,sex,photo,accType,countryCode,imConnect,logStatus,appTypeId,createTime,callStatus,<!-- pushToken, -->sysType,phoneModel
+		from user
+		where macAddress = #{macAddress} and accType = 1
+	</select>
+
+
+	<!-- 根据手机号码删除对应的用户 -->
+	<delete id="deleteUserByPhone">
+		delete from user where phone = #{phone} and
+		countryCode = #{countryCode}
+	</delete>
+
+	<!-- 根据mac地址删除对应的用户 -->
+	<delete id="deleteUserByMacAddress">
+		delete from user where macAddress = #{macAddress}
+	</delete>
+
+	<!-- 更新imConnect -->
+	<update id="updateImConnect">
+		UPDATE `user`
+		SET imConnect = #{imConnect}
+		WHERE userId
+		=
+		#{userId}
+	</update>
+
+	<!-- 修改登录状态 -->
+	<update id="updateLogStatusByUserId">
+		UPDATE `user`
+		SET logStatus = #{logStatus}
+		WHERE
+		userId
+		=
+		#{userId}
+	</update>
+
+	<!-- 修改通话状态 -->
+	<update id="updateCallStatus">
+		UPDATE `user`
+		SET callStatus = #{callStatus}
+		WHERE
+		userId
+		=
+		#{userId}
+	</update>
+
+	<!-- 根据mac地址 修改登录状态 -->
+	<update id="updateLogsByMac">
+		UPDATE `user`
+		SET logStatus = #{logStatus}
+		WHERE
+		macAddress
+		=
+		#{macAddress}
+	</update>
+	<!--  根据im 记录消息数量 -->
+<!-- 	<update id="updateNewsByIm">
+	UPDATE `user`
+		SET news = #{news}
+		WHERE
+		imConnect
+		=
+		#{imConnect}
+	</update> -->
+	<delete id="deleteByUserId">
+	   delete from user  where
+	     userId =#{userId}
+	</delete>
+</mapper>

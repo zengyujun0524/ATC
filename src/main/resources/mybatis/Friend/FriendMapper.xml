@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aura.springboot.mapper.FriendMapper">
+
+   	<insert id="addFriendRequest">
+	insert INTO friend (userId,friendsId,name,photo,phone,bindingTime,friendPhone,friendName,friendPhoto,msgType)
+	VALUES(#{userId} ,#{friendsId} ,#{name} ,#{photo} ,#{phone},#{bindingTime},#{friendPhone},#{friendName},#{friendPhoto},#{msgType})
+	</insert>
+	<select id="getFriendList" resultType="com.aura.springboot.entity.Friend">	  
+     select msgId,userId,friendsId,isRead,msgResult,msgType,name,photo,phone,friendPhone,friendName,friendPhoto , isDelete FROM friend 
+      WHERE  
+      <if test="type==0">
+       userId =#{userId}
+         </if> 
+     <if test="type==1">
+     friendsId=#{userId}
+       
+     </if> 
+	</select>
+		<!-- 查询好友关系    -->
+	<select id="getFriendList2" resultType="com.aura.springboot.entity.Friend">
+	 select msgId,userId,friendsId,isRead,msgResult,msgType,name,photo,phone,friendPhone,friendName,friendPhoto
+	 , isDelete FROM friend
+	 <where> 	 
+	 friendsId =#{userId}  or  userId =#{userId} 
+	 and
+	 msgResult= 1   ORDER BY msgId DESC
+	 </where>
+	</select>
+		<!-- 更新消息状态 -->		
+	 <update id="updateProcessingResults">
+	  update friend
+      <if test="type==0">
+	  <set>  
+	 msgResult = #{msgResult} ,
+	  msgType = #{msgType}
+	 </set>
+	 <where>
+	  msgId = #{msgId}
+	 </where> 
+	 </if> 
+	  <if test="type==1">
+	  <set>
+	  isRead =1
+	  </set>
+	  <where>
+	 <!-- 此处msgId 实际为userId -->  
+	  userId= #{msgId}
+	  </where>
+	    </if>
+	 </update>
+<!-- 	<delete id="deleteAssociatedFriends    ">
+	 DELETE FROM friend  WHERE  msgId = #{msgId}
+	</delete> -->
+	 <update id="deleteAssociatedFriends">
+	   update friend
+	   <set>
+	    msgResult = 3
+	   </set>
+	  
+	   <where>
+	    msgId = #{msgId}
+	   </where> 
+	 </update>
+	
+	<select id="getFriend" resultType="com.aura.springboot.entity.Friend">
+	  select msgId,userId,friendsId,isRead,msgResult,msgType,name,photo,phone,bindingTime , isDelete FROM friend  
+	  <where>
+	    bindingTime=(SELECT MAX(bindingTime) FROM  friend  GROUP BY userId HAVING userId = #{userId}  and friendsId = #{friendsId})
+	  </where>
+	</select>
+	<!-- 辅助验证 -->
+	<select id="aidedVerification"  resultType="com.aura.springboot.entity.Friend">
+	 select msgId,userId,friendsId,isRead,msgResult,msgType,name,photo,phone,bindingTime ,isDelete  FROM friend  
+
+	 <where>
+	  bindingTime=(SELECT MAX(bindingTime) FROM  friend  GROUP BY userId HAVING  userId = #{userId}  and friendsId = #{friendsId} and  msgType=1)
+	      
+	 </where>
+	</select>
+	<select id="selectFriendByMsgId"  resultType="com.aura.springboot.entity.Friend">
+	select msgId,userId,friendsId,isRead,msgResult,msgType,name,photo,phone,bindingTime ,isDelete FROM friend
+	<where>
+	  msgId = #{msgId}  and  msgType =0
+	</where>
+	</select>
+	  <!--  清楚消息   -->
+		 <update id="delMsg">
+	   update friend
+	   <set>
+	    isDelete = 1
+	   </set>
+	 
+	   <where>
+	    msgId = #{msgId}
+	   </where> 
+	 </update>
+	
+	 <!-- 清空所有信息-->
+	<update id="allDelMsg">
+	   update friend
+	   <set>
+	    isDelete = 1
+	   </set>
+	   <where>
+	    userId = #{userId}
+	   </where> 
+	 </update>
+	</mapper>

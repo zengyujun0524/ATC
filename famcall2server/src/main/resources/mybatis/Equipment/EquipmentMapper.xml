@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aura.springboot.mapper.EquipmentMapper">
+
+	<!-- 注册设备 -->
+	<insert id="insertEquipment"
+		parameterType="com.aura.springboot.entity.Equipment">
+		INSERT INTO
+		`equipment`(macAddress,proName,proNum,activationTime,proVersion,proSysVersion,firmwareSysVersion,adminPwdSwitch,doNotDisturb,Unblock,disturbFromTime,distrubToTime,tableStatus,actStatus)
+		VALUES(#{macAddress},#{proName},#{proNum},#{activationTime},#{proVersion},#{proSysVersion},#{firmwareSysVersion},#{adminPwdSwitch},#{doNotDisturb},#{Unblock},"23:00","07:00",0,0);
+	</insert>
+
+	<!-- 根据mac地址 更新回复和查询token -->
+	<update id="updateQueryReply">
+		update equipment
+		set queryToken =
+		#{queryToken},replyToken = #{replyToken}
+		where
+		macAddress =
+		#{macAddress}
+	</update>
+
+	<!-- 根据proId更新激活状态 -->
+	<update id="updateActStatus">
+		update equipment
+		<set>
+			<if test="actStatus != null">
+				actStatus = #{actStatus},
+			</if>
+			<if test="actEndTime != null">
+				actEndTime = #{actEndTime}
+			</if>
+		</set>
+		where proId = #{proId}
+	</update>
+
+
+	<!-- 根据项目名称获取平板结构图 -->
+	<select id="selectAppStructsBg" resultType="java.lang.String">
+		select appStructsBg
+		from apptype where appName = #{appName}
+	</select>
+
+	<!-- 注册设备 -->
+	<select id="selectEquById" resultType="java.lang.Integer">
+		select count(1) from
+		equipment where proId = #{proId}
+	</select>
+
+	<!-- 白名单勿扰开启/关闭 -->
+	<update id="doNotDisturbUpdate">
+		update equipment
+		<set>
+			<if test="doNotDisturb!=null">
+				doNotDisturb = #{doNotDisturb} ,
+			</if>
+			<if test="disturbFromTime!=null">
+				disturbFromTime = #{disturbFromTime},
+			</if>
+			<if test="distrubToTime!=null">
+				distrubToTime = #{distrubToTime} ,
+			</if>
+		</set>
+		where proId = #{proId}
+	</update>
+
+	<!-- 黑名单拦截开关 -->
+	<update id="UnblockUpdate">
+		update equipment
+		set Unblock = #{Unblock}
+		where
+		proId =
+		#{proId}
+	</update>
+
+	<!-- 更新平板状态 -->
+	<update id="updateTableStauts">
+		update equipment
+		<set>
+			<if test="tableStatus != null">
+				tableStatus = #{tableStatus},
+			</if>
+			<if test="occupier != null">
+				occupier = #{occupier},
+			</if>
+		</set>
+		where
+		proId = #{proId}
+	</update>
+
+
+	<!-- 设置区域码 -->
+	<update id="setRegionCode"
+		parameterType="com.aura.springboot.entity.Equipment">
+		UPDATE
+		`equipment`
+		<set>
+			<if test="regionCode != null">
+				regionCode=#{regionCode},
+			</if>
+			<if test="country != null">
+				country=#{country},
+			</if>
+			<if test="region != null">
+				region=#{region},
+			</if>
+		</set>
+		WHERE
+		macAddress = #{macAddress}
+	</update>
+
+	<!-- 设置/修管理密码 -->
+	<update id="updateAdminCode">
+		UPDATE
+		`equipment`
+		SET
+		adminCode=#{adminCode}
+		WHERE
+		proId
+		= #{proId}
+	</update>
+
+	<!-- 通过密保问题修改管理密码 -->
+	<update id="updateAdminCodeByAnswer">
+		update equipment
+		set adminCode = #{adminCode}
+		where
+		proId = #{proId}
+	</update>
+
+	<!-- 设置/修改密保问题 -->
+	<update id="updateProblem">
+		UPDATE
+		`equipment`
+		SET
+		problem=#{problem},
+		answer=#{answer}
+		WHERE proId = #{proId}
+	</update>
+
+	<!-- 设置/修改密保手机 -->
+	<update id="updateProPhone">
+		UPDATE
+		`equipment`
+		SET
+		proPhone=#{proPhone},countryCode=#{countryCode}
+		WHERE
+		proId = #{proId}
+	</update>
+
+	<!-- 设置/修改座机号码 -->
+	<update id="updateLocalPhone">
+		UPDATE
+		`equipment`
+		SET
+		localPhone=#{localPhone}
+		WHERE
+		proId = #{proId}
+	</update>
+
+
+	<!-- 设置座机号码和设备名称 -->
+	<update id="updateLocalPhoneAndProName">
+		UPDATE
+		`equipment`
+		<set>
+			<if test="localPhone!=null">
+				localPhone=#{localPhone},
+			</if>
+			<if test="proName!=null">
+				proName = #{proName},
+			</if>
+		</set>
+		WHERE proId = #{proId}
+	</update>
+
+	<!-- 设置设备名称 -->
+	<update id="updateProName">
+		UPDATE
+		`equipment`
+		SET
+		proName = #{proName}
+		WHERE
+		proId =
+		#{proId}
+	</update>
+
+
+	<!-- 根据macAddress查询设备信息 -->
+	<select id="selectEquipmentByMacAddress"
+		resultType="com.aura.springboot.entity.Equipment">
+		select
+		proId,macAddress,localPhone,problem,answer,proPhone,adminCode,proName,proNum,activationTime,proVersion,proSysVersion,firmwareSysVersion,adminPwdSwitch,regionCode,operatorId,doNotDisturb,disturbFromTime,distrubToTime,Unblock,countryCode,country,region,tableStatus,queryToken,replyToken,actStatus,occupier,actEndTime
+		from equipment
+		where macAddress = #{macAddress}
+	</select>
+
+	<!-- 根据proId查询设备信息 -->
+	<select id="selectEquiById"
+		resultType="com.aura.springboot.entity.Equipment">
+		select
+		proId,macAddress,localPhone,problem,answer,proPhone,adminCode,proName,proNum,activationTime,proVersion,proSysVersion,firmwareSysVersion,adminPwdSwitch,regionCode,operatorId,doNotDisturb,disturbFromTime,distrubToTime,Unblock,countryCode,country,region,tableStatus,queryToken,replyToken,actStatus,occupier,actEndTime
+		from equipment
+		where proId = #{proId}
+	</select>
+
+	<!-- 根据macAddress查询设备信息 -->
+	<select id="selectDoNotDisturbByMac"
+		resultType="com.aura.springboot.entity.Equipment">
+		select
+		doNotDisturb,disturbFromTime,distrubToTime
+		from
+		equipment where macAddress = #{macAddress}
+	</select>
+
+	<!-- 修改运营商 -->
+	<update id="updateOperator">
+		UPDATE
+		`equipment`
+		SET
+		operatorId=#{operatorId}
+		WHERE
+		proId = #{proId}
+	</update>
+
+	<!-- 修改管理密码状态 -->
+	<update id="updateAdminCodeStatus">
+		UPDATE
+		`equipment`
+		SET
+		adminPwdSwitch=#{adminPwdSwitch}
+		WHERE
+		proId = #{proId}
+	</update>
+
+	<!-- 查询管理密码状态 -->
+	<select id="selectAdminCodeStatus"
+		resultType="java.lang.Integer">
+		select adminPwdSwitch from equipment where macAddress =
+		#{macAddress}
+	</select>
+</mapper>

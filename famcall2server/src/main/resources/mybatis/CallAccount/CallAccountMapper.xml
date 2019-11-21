@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aura.springboot.mapper.CallAccountMapper">
+
+	<!-- 插入通话记录 -->
+	<insert id="addCallAccount"
+		parameterType="com.aura.springboot.entity.CallAccount">
+		insert into
+		callaccount(callFrom,callTo,IncomingOutgoing,callType,startTime,endTime,callTime)
+		values(#{callFrom},#{callTo},#{IncomingOutgoing},#{callType},#{startTime},#{endTime},#{callTime})
+	</insert>
+
+	<!-- 查看通话记录 -->
+	<select id="selectCallAccount"
+		resultType="com.aura.springboot.entity.CallAccount">
+		select callFrom,callTo,IncomingOutgoing,callType,startTime,endTime,callTime
+		from callaccount
+		where callFrom = #{callFrom}
+	</select>
+</mapper>

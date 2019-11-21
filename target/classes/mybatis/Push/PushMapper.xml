@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aura.springboot.mapper.PushMapper">
+	<!-- 根据im账号查询用户实体 -->
+	<select id="selectUserByIm"
+		resultType="com.aura.springboot.entity.Push">
+		SELECT  userId,token,pushToken,pushKit,news,sysType,accType, control FROM push 
+		where imConnect = #{imConnect}
+	</select>
+		 <update id="updatePushTokenAndpushKit">
+		 update push 
+		 <set>
+		 <if test="userId!=null">
+		 pushToken ='12345', 
+		 </if>
+		 <if test="userId!=null">
+		 	pushKit='12345', 
+		 </if>
+		 </set>
+		where userId = #{userId}	
+		 </update>
+
+	<!-- 更新离线token  -->     
+	<update id="updatePushToken">
+		update push 
+		<set>
+			<if test="Type ==0">
+				pushToken = #{pushToken},
+			</if>
+			<if test="Type ==1">
+		        pushKit = #{pushToken},
+			</if>
+		</set>
+		where userId = #{userId}		
+	</update>
+	
+    <!-- 更新离线token -->
+	<update id="updatePushTokenAndSysType">
+		update push 
+		<set>
+			<if test="pushToken != null">
+				pushToken = #{pushToken},
+			</if>
+			<if test="sysType != null">
+				sysType = #{sysType},
+			</if>
+		</set>
+		where userId = #{userId}		
+	</update>
+	
+	<!--  根据im 记录消息数量 -->
+	<update id="updateNewsByIm">
+	UPDATE `push`
+		SET news = #{news}
+		WHERE
+		userId
+		=
+		#{userId}
+	</update>
+	
+		<!--更新单点登录token -->
+	<update id="updateToken">
+		update push
+		<set>
+		<if test="token!=null">
+			token = #{token},
+		</if>
+	 	<if test="sysType!=null">
+	 	sysType = #{sysType},
+	 	</if>
+		</set> 
+		where userId = #{userId}		
+	</update>
+	
+  <!--插入推记录与user表id同步  -->
+  <insert id="insertPush">
+  INSERT INTO push (userId,imConnect,accType)  VALUES(#{userId},#{imConnect},#{accType});
+  </insert>
+     <!-- 设置免打扰 -->
+    <update  id="dontDisturb">
+       UPDATE push
+    <set> 
+    control=#{control} 
+   </set>
+    <where>
+    userId = #{userId} 
+    </where>
+  </update>	
+  	<select id="selectDisturb"
+		resultType="com.aura.springboot.entity.Push">
+		SELECT  userId,token,pushToken,pushKit,news,sysType,accType ,control FROM push 
+		where userId = #{userId}
+	</select>
+</mapper>

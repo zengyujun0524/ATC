@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aura.springboot.mapper.HistoryMapper">
+
+	<!-- 记录手机登录历史 -->
+	<insert id="insertHistory"
+		parameterType="com.aura.springboot.entity.History">
+		INSERT INTO
+		history(userId,phoneModel,lastLogonTime,snNum,DeviceLock)
+		VALUES(#{userId},#{phoneModel},#{lastLogonTime},#{snNum},#{DeviceLock});
+	</insert>
+
+	<!-- 查看设备锁状态 -->
+	<select id="selectDeviceLock"
+		resultType="com.aura.springboot.entity.History">
+		SELECT
+		historyId,userId,phoneModel,lastLogonTime,snNum,DeviceLock FROM
+		history
+		WHERE userId = #{userId}
+		ORDER BY lastLogonTime DESC
+		LIMIT 0,1
+	</select>
+	
+	
+		<!-- 查看设备锁状态 -->
+	<select id="selectHistoryById"
+		resultType="com.aura.springboot.entity.History">
+		SELECT
+		historyId,userId,phoneModel,lastLogonTime,snNum,DeviceLock FROM
+		history
+		WHERE historyId = #{historyId}
+	</select>
+
+	<!-- 更新同一手机最近登录的时间 -->
+	<update id="updateHisInfo">
+		update history set lastLogonTime = #{lastLogonTime}
+		where historyId = #{historyId}
+	</update>
+
+	<!-- 查看手机用户所有登录过的手机 -->
+	<select id="selectHistoryByUserId"
+		resultType="com.aura.springboot.entity.History">
+		SELECT
+		historyId,userId,phoneModel,lastLogonTime,snNum,DeviceLock FROM
+		history
+		WHERE userId = #{userId} ORDER BY lastLogonTime DESC
+	</select>
+
+	<!-- 删除该历史记录 -->
+	<delete id="delHistoryById">
+		DELETE FROM history where historyId = #{historyId}
+	</delete>
+
+	<!-- 修改设备锁状态 设备锁状态（0：关闭、1：开启） -->
+	<update id="updateDev">
+		update history set DeviceLock = #{DeviceLock} where
+		historyId = #{historyId}
+	</update>
+
+</mapper>

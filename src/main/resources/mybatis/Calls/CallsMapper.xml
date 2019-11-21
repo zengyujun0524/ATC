@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aura.springboot.mapper.CallsMapper">
+
+   <insert id="cachedCalls" parameterType="com.aura.springboot.entity.Calls">
+   INSERT INTO
+   `calls`(userId,callNumber ,macAddress ,callTime ,imConnect ,proId,type )
+	VALUES(#{userId},#{callNumber},#{macAddress},#{callTime},#{imConnect},#{proId},#{type});
+   </insert>
+   
+   <select id="queryCalls" resultType="com.aura.springboot.entity.Calls">
+    SELECT  userId,callNumber,macAddress,callTime,imConnect, proId,type FROM `calls` 
+    <where>
+    userId= #{userId}
+    </where>
+    
+   </select>
+   
+   <delete id="delCallsByUser">
+      DELETE FROM `calls` 
+      <where>  
+      userId= #{userId}
+      </where>
+   </delete>
+</mapper>

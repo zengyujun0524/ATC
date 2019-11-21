@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aura.springboot.mapper.RelationMapper">
+
+	<resultMap type="com.aura.springboot.entity.Relation"
+		id="relationId">
+		<id column="relationId" property="relationId" />
+		<result column="proId" property="proId" />
+		<result column="userId" property="userId" />
+		<result column="bindingTime" property="bindingTime" />
+		<result column="bindingStatus" property="bindingStatus" />
+		<result column="relationProId" property="relationProId" />
+		<association property="user"
+			javaType="com.aura.springboot.entity.User">
+			<id property="userId" column="userId" />
+			<result property="username" column="username" />
+			<result property="password" column="password" />
+			<result property="email" column="email" />
+			<result property="birthday" column="birthday" />
+			<result property="sex" column="sex" />
+			<result property="photo" column="photo" />
+			<result property="phone" column="phone" />
+			<result property="accType" column="accType" />
+			<result property="countryCode" column="countryCode" />
+			<result property="imConnect" column="imConnect" />
+			<result property="createTime" column="createTime" />
+			<result property="appTypeId" column="appTypeId" />
+			<result property="logStatus" column="logStatus" />
+			<result property="callStatus" column="callStatus" />
+		</association>
+	</resultMap>
+
+	<!-- 绑定设备 -->
+	<insert id="binding"
+		parameterType="com.aura.springboot.entity.Relation">
+		insert into relation
+		(proId,userId,bindingTime,bindingStatus,relationProId)
+		values(#{proId},#{userId},#{bindingTime},0,#{relationProId});
+	</insert>
+
+
+	<!-- 手机解绑设备 -->
+	<update id="unBinding">
+		delete from relation
+		where userId = #{userId}
+	</update>
+	
+		<!-- 平板解绑设备手机 -->
+	<update id="unBindingPro">
+		delete from relation
+		where proId = #{proId}
+	</update>
+
+
+	<!-- 根据mac地址查询绑定手机的序号集合 -->
+	<select id="numList" resultType="java.lang.Integer">
+		select relationProId
+		from relation
+		where proId = (select proId from equipment where macAddress =
+		#{macAddress})
+		order by relationProId asc
+	</select>
+
+
+	<!-- 根据proid查询设备列表 -->
+	<!-- <select id="selectRelationByProId" resultMap="relationId   "> -->
+	<!-- select -->
+	<!-- r.relationId,r.proId,r.userId,u.username,u.password,u.email,r.bindingTime, -->
+	<!-- r.bindingStatus,r.relationProId,u.birthday,u.sex,u.photo,u.phone,u.accType,u.countryCode, -->
+	<!-- u.imConnect,u.createTime,u.appTypeId,u.logStatus,u.callStatus -->
+	<!-- from relation r,user u -->
+	<!-- where r.userId = u.userId and r.bindingStatus = 0 and proId = #{proId} -->
+	<!-- </select> -->
+
+	<!-- 查看设备列表 -->
+	<select id="selectRelationByUserId"
+		resultType="com.aura.springboot.entity.User">
+		select
+		u.userId,u.username,u.`password`,u.phone,u.photo,u.macAddress,u.email,u.birthday,u.sex,u.phone,u.accType,
+		u.countryCode,u.imConnect,u.createTime,u.appTypeId,u.logStatus,u.callStatus,u.phoneModel ,r.relationProId,u.sysType
+		from relation r,user u
+		where r.userId = u.userId
+		and r.bindingStatus = 0  
+		<if test="accType == 1">
+			and proId = (select proId from equipment where macAddress
+			= (select
+			macAddress from user where userId = #{userId} ))
+		</if>
+		<if test="accType == 0">
+			and r.proId = (select r1.proId from relation r1 where
+			r1.userId =
+			#{userId} and
+			r1.bindingStatus = 0)
+		</if>
+     order by field(logStatus,1,3,0,2)
+	</select>
+	<!-- 查看是否已绑定信息 -->
+	<select id="selectCount"
+		resultType="com.aura.springboot.entity.Relation">
+		select relationId,proId,userId,bindingTime,
+		bindingStatus,relationProId from relation
+		where userId = #{userId}
+	</select>
+	<!-- 根据userId查出对应的平板信息 -->
+	<select id="selectProByUserId"
+		resultType="com.aura.springboot.entity.User">
+		select
+		userId,username,`password`,phone,macAddress,email,birthday,sex,photo,accType,countryCode,imConnect,createTime,phoneModel,appTypeId,logStatus,callStatus
+		from user
+		where macAddress = (select macAddress from equipment
+		where proId = (select proId from relation  where userId = #{userId}))
+		and accType = 1 <!--  order by field(callStatus,2,1,0), field(logStatus,1,0,2,3) -->
+	</select>  
+	<!-- 查看绑定的设备id（手机看平板） -->
+	<select id="selectProIdByUserId" resultType="com.aura.springboot.entity.Relation">
+		select proId
+		from
+		relation
+		where userId = #{userId} 
+	</select>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aura.springboot.mapper.RegionMapper">
+
+	<!-- 根据parentId选择国家/城市 传0是查找国家，传parentId查找到对应的国家 -->
+	<select id="selectCityByCountry"
+		resultType="com.aura.springboot.entity.Region">
+		select regionId,name_cn,name_en,parentId,regionCode
+		from
+		region
+		where parentId=#{parentId}
+	</select>
+    <select id="selectCountryByParentId"
+    resultType="com.aura.springboot.entity.Region">
+      	select regionId,name_cn,name_en,parentId,regionCode,cityCode
+		from region
+		where regionId=#{parentId}
+    </select>
+
+	<!-- 根据城市返回区域码 -->
+	<select id="selectMapByCityCode"
+		resultType="com.aura.springboot.entity.Region">
+		select regionId,name_cn,name_en,parentId,regionCode,cityCode
+		from region
+		where cityCode=#{cityCode}
+	</select>
+
+</mapper>
